@@ -1,38 +1,32 @@
 import InputGroup from '../../../components/ui/Input';
-import YearInput from '../../../components/ui/YearInput';
 import Button from '../../../components/ui/Button';
 
-const BookForm = (props) => {
-	const { handleChange, handleSubmit, value } = props;
+const MemberForm = (props) => {
+	const { handleSubmit, handleChange, value } = props;
 
 	return (
 		<form onSubmit={handleSubmit} className="flex flex-col gap-2">
 			<InputGroup
-				label="Judul Buku"
-				name="nama_buku"
+				label="Nama Anggota"
+				name="nama_anggota"
 				onChange={handleChange}
-				value={value.nama_buku}
+				value={value.nama_anggota}
 				className="border rounded-lg px-3 py-2 outline-blue-500 w-92"
 			/>
 			<InputGroup
-				label="Penulis"
-				name="penulis"
+				label="Email"
+				name="email"
+				type="email"
 				onChange={handleChange}
-				value={value.penulis}
+				value={value.email}
 				className="border rounded-lg px-3 py-2 outline-blue-500 w-92"
 			/>
 			<InputGroup
-				label="Penerbit"
-				name="penerbit"
+				label="No Telpon"
+				name="no_telp"
 				onChange={handleChange}
-				value={value.penerbit}
+				value={value.no_telp}
 				className="border rounded-lg px-3 py-2 outline-blue-500 w-92"
-			/>
-			<YearInput
-				label="Tahun Terbit"
-				name="tahun_terbit"
-				onChange={handleChange}
-				value={value.tahun_terbit}
 			/>
 			<Button className="bg-blue-600 rounded-lg px-5 py-2 w-fit text-white font-semibold cursor-pointer hover:bg-blue-800">
 				Submit
@@ -41,4 +35,4 @@ const BookForm = (props) => {
 	);
 };
 
-export default BookForm;
+export default MemberForm;
