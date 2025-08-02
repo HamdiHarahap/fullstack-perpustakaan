@@ -3,7 +3,6 @@ import Label from '../Input/Label';
 const YearInput = (props) => {
 	const { name, label, value, onChange } = props;
 
-	// Buat array tahun dari 1980 sampai tahun sekarang
 	const currentYear = new Date().getFullYear();
 	const years = Array.from({ length: currentYear - 1979 }, (_, i) => 1980 + i);
 
