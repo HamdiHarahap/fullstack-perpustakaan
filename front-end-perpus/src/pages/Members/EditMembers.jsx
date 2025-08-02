@@ -1,9 +1,10 @@
 import MemberForm from '../../features/members/MemberForm';
 import Main from '../../components/Layout/Main';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
-const AddMembers = () => {
+const EditMembers = () => {
+	const { id } = useParams();
 	const navigate = useNavigate();
 	const [member, setMember] = useState({
 		nama_anggota: '',
@@ -19,6 +20,14 @@ const AddMembers = () => {
 		}
 	}, [message]);
 
+	useEffect(() => {
+		fetch(`http://127.0.0.1:8000/api/members/${id}`)
+			.then((res) => res.json())
+			.then((data) => {
+				setMember(data.data);
+			});
+	}, [id]);
+
 	const handleChange = (e) => {
 		const { name, value } = e.target;
 		setMember((prev) => ({
@@ -30,8 +39,8 @@ const AddMembers = () => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 
-		const res = await fetch('http://127.0.0.1:8000/api/members', {
-			method: 'POST',
+		const res = await fetch(`http://127.0.0.1:8000/api/members/${id}`, {
+			method: 'PUT',
 			headers: {
 				'Content-Type': 'application/json',
 			},
@@ -76,4 +85,4 @@ const AddMembers = () => {
 	);
 };
 
-export default AddMembers;
+export default EditMembers;
