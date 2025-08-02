@@ -1,10 +1,10 @@
 const Input = (props) => {
-	const { className, value, onChange, name } = props;
+	const { className, value, onChange, name, type = 'text' } = props;
 
 	return (
 		<input
 			required
-			type="text"
+			type={type}
 			className={className}
 			value={value}
 			onChange={onChange}
