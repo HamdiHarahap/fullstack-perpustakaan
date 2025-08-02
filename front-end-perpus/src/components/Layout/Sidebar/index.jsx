@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 const Sidebar = (props) => {
 	const { page } = props;
 
@@ -6,14 +8,32 @@ const Sidebar = (props) => {
 			<h1 className="text-2xl font-bold text-white">Sistem Perpustakaan</h1>
 			<nav>
 				<ul className="flex flex-col p-4">
-					<li className="text-lg font-semibold mb-6 bg-gray-100 p-3 rounded-lg text-black">
-						<a href="/dashboard">Dashboard</a>
+					<li
+						className={
+							page == 'Dashboard'
+								? 'text-lg font-semibold mb-6 bg-gray-100 p-3 rounded-lg text-black'
+								: 'text-white text-lg font-semibold mb-6'
+						}
+					>
+						<Link to="/dashboard">Dashboard</Link>
 					</li>
-					<li className="text-white text-lg font-semibold mb-6">
-						<a href="/daftar-buku">Data Buku</a>
+					<li
+						className={
+							page == 'Data Buku'
+								? 'text-lg font-semibold mb-6 bg-gray-100 p-3 rounded-lg text-black'
+								: 'text-white text-lg font-semibold mb-6'
+						}
+					>
+						<Link to="/daftar-buku">Data Buku</Link>
 					</li>
-					<li className="text-white text-lg font-semibold mb-6">
-						<a href="">Data Anggota</a>
+					<li
+						className={
+							page == 'Data Anggota'
+								? 'text-lg font-semibold mb-6 bg-gray-100 p-3 rounded-lg text-black'
+								: 'text-white text-lg font-semibold mb-6'
+						}
+					>
+						<Link to="/daftar-anggota">Data Anggota</Link>
 					</li>
 				</ul>
 			</nav>
