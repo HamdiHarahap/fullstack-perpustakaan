@@ -6,7 +6,7 @@ const Main = (props) => {
 
 	return (
 		<div>
-			<Sidebar />
+			<Sidebar page={page} />
 			<div className="flex flex-col gap-12 ps-[22rem] pt-12">
 				<Topbar page={page} />
 				<div className="mr-20">{children}</div>
