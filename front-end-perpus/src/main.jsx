@@ -11,6 +11,8 @@ import Members from './pages/Members/index.jsx';
 import AddMembers from './pages/Members/AddMembers.jsx';
 import EditMembers from './pages/Members/EditMembers.jsx';
 import ErrorPage from './pages/404.jsx';
+import Transactions from './pages/Transactions/index.jsx';
+import AddLoans from './pages/Transactions/AddLoans.jsx';
 
 const router = createBrowserRouter([
 	{
@@ -44,6 +46,15 @@ const router = createBrowserRouter([
 	{
 		path: '/edit-anggota/:id',
 		element: <EditMembers />,
+	},
+
+	{
+		path: '/daftar-peminjaman',
+		element: <Transactions />,
+	},
+	{
+		path: 'tambah-peminjaman',
+		element: <AddLoans />,
 	},
 	{
 		path: '*',
