@@ -35,6 +35,15 @@ const Sidebar = (props) => {
 					>
 						<Link to="/daftar-anggota">Data Anggota</Link>
 					</li>
+					<li
+						className={
+							page == 'Daftar Peminjaman'
+								? 'text-lg font-semibold mb-6 bg-gray-100 p-3 rounded-lg text-black'
+								: 'text-white text-lg font-semibold mb-6'
+						}
+					>
+						<Link to="/daftar-peminjaman">Peminjaman</Link>
+					</li>
 				</ul>
 			</nav>
 		</div>
