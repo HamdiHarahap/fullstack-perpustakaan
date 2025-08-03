@@ -18,6 +18,7 @@ class BookReturnController extends Controller
         ]);
 
         $loan = LoanDetail::where('id', $request->loan_detail_id)->first();
+        $loan->update(['status' => 'dikembalikan']);
 
         $book = Book::where('id', $loan->book->id)->first();
         $book->update(['status' => 'tersedia']);
