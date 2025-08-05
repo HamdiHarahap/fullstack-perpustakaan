@@ -26,7 +26,7 @@ class BookReturnController extends Controller
         $member = Member::where('id', $loan->loan->member->id)->first();
         $member->update(['status' => 'tidak meminjam']);
 
-        $bookReturn = BookReturn::create([
+        BookReturn::create([
             'loan_detail_id' => $request->loan_detail_id,
             'tanggal_kembali' => $request->tanggal_kembali,
         ]);
