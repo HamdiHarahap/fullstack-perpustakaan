@@ -4,6 +4,7 @@ import Button from '../../components/ui/Button';
 import { Link } from 'react-router-dom';
 
 const Books = () => {
+	const [allBooks, setAllBooks] = useState([]);
 	const [books, setBooks] = useState([]);
 	const [message, setMessage] = useState('');
 
@@ -11,13 +12,15 @@ const Books = () => {
 		fetch('http://127.0.0.1:8000/api/books')
 			.then((res) => res.json())
 			.then((data) => {
-				setBooks(data.data || []);
+				const list = data.data || [];
+				setAllBooks(list);
+				setBooks(list);
 			})
 			.catch((err) => {
 				console.error('Gagal mengambil buku:', err);
 				setMessage('Gagal mengambil data buku.');
 			});
-	}, [books]);
+	}, []);
 
 	useEffect(() => {
 		if (message) {
@@ -40,6 +43,7 @@ const Books = () => {
 			const data = await res.json();
 
 			if (data.success) {
+				setAllBooks((prev) => prev.filter((book) => book.id !== id));
 				setBooks((prev) => prev.filter((book) => book.id !== id));
 			}
 			setMessage(data.message);
@@ -49,6 +53,18 @@ const Books = () => {
 		}
 	};
 
+	const searchBook = (e) => {
+		e.preventDefault();
+		const query = e.target.search.value.trim().toLowerCase();
+		if (!query) {
+			setBooks(allBooks);
+			return;
+		}
+		setBooks(
+			allBooks.filter((book) => book.nama_buku?.toLowerCase().includes(query))
+		);
+	};
+
 	return (
 		<div>
 			<Main page="Data Buku">
@@ -56,12 +72,13 @@ const Books = () => {
 					<div className="flex justify-between">
 						<h1 className="text-sm font-semibold">Daftar Buku</h1>
 						<form
-							action=""
-							className="ml-auto mr-8 border border-gray-400 rounded-lg"
+							onSubmit={searchBook}
+							className="ml-auto mr-8 border border-gray-400 rounded-lg flex"
 						>
 							<input
 								type="text"
 								name="search"
+								placeholder="Cari nama buku"
 								className="rounded-s-md px-3 py-2 outline-blue-500"
 							/>
 							<button
