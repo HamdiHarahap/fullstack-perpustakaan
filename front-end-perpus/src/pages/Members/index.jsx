@@ -61,6 +61,7 @@ const Members = () => {
 						>
 							<input
 								type="text"
+								placeholder="Cari nama anggota"
 								name="search"
 								className="rounded-s-md px-3 py-2 outline-blue-500"
 							/>
